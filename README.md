@@ -67,6 +67,48 @@ The optimized production build will be in the `dist` folder.
 npm run preview
 ```
 
+## Docker
+
+### Using Docker
+
+Build and run the application in a container:
+
+```bash
+# Build the Docker image
+docker build -t sample-ai-app .
+
+# Run the container
+docker run -p 8080:80 sample-ai-app
+```
+
+Then open your browser to `http://localhost:8080`
+
+### Using Docker Compose
+
+For easier local development:
+
+```bash
+# Start the container
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the container
+docker-compose down
+```
+
+The app will be available at `http://localhost:8080`
+
+## CI/CD Pipeline
+
+This project includes a GitHub Actions workflow that:
+- Builds and tests the application on every push
+- Creates Docker images and pushes them to GitHub Container Registry
+- Runs on push to main branches and pull requests
+
+The workflow is defined in `.github/workflows/ci-cd.yml`
+
 ## Project Structure
 
 ```
