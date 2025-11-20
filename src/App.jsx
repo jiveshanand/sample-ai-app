@@ -4,6 +4,8 @@ import './App.css'
 function App() {
   const [loaded, setLoaded] = useState(false)
   const [particles, setParticles] = useState([])
+  const [activeTab, setActiveTab] = useState('home')
+  const [openFaq, setOpenFaq] = useState(null)
 
   useEffect(() => {
     setLoaded(true)
@@ -19,6 +21,10 @@ function App() {
     }))
     setParticles(particleArray)
   }, [])
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index)
+  }
 
   return (
     <div className="app-container">
@@ -43,52 +49,145 @@ function App() {
         ))}
       </div>
 
+      {/* Professional Navigation Header */}
+      <header className="main-header">
+        <div className="header-content">
+          <div className="logo">
+            <span className="logo-icon">🚀</span>
+            <span className="logo-text">CodeStart Academy</span>
+          </div>
+          <nav className="main-nav">
+            <a href="#home" className="nav-link active">Home</a>
+            <a href="#tutorial" className="nav-link">Tutorial</a>
+            <a href="#features" className="nav-link">Features</a>
+            <a href="#faq" className="nav-link">FAQ</a>
+            <a href="#community" className="nav-link">Community</a>
+          </nav>
+          <button className="cta-button">Get Started Free</button>
+        </div>
+      </header>
+
       {/* Main content */}
       <div className={`content ${loaded ? 'loaded' : ''}`}>
         <div className="card">
           <div className="shine"></div>
-          <h1 className="title">
-            <span className="letter" style={{ animationDelay: '0.1s' }}>H</span>
-            <span className="letter" style={{ animationDelay: '0.2s' }}>a</span>
-            <span className="letter" style={{ animationDelay: '0.3s' }}>p</span>
-            <span className="letter" style={{ animationDelay: '0.4s' }}>p</span>
-            <span className="letter" style={{ animationDelay: '0.5s' }}>y</span>
-            <span className="letter" style={{ animationDelay: '0.6s' }}> </span>
-            <span className="letter" style={{ animationDelay: '0.7s' }}>C</span>
-            <span className="letter" style={{ animationDelay: '0.8s' }}>o</span>
-            <span className="letter" style={{ animationDelay: '0.9s' }}>d</span>
-            <span className="letter" style={{ animationDelay: '1.0s' }}>i</span>
-            <span className="letter" style={{ animationDelay: '1.1s' }}>n</span>
-            <span className="letter" style={{ animationDelay: '1.2s' }}>g</span>
-          </h1>
 
-          <div className="divider"></div>
+          {/* Hero Section */}
+          <div className="hero-section">
+            <div className="hero-badge">Perfect for Beginners</div>
+            <h1 className="title">
+              <span className="letter" style={{ animationDelay: '0.1s' }}>L</span>
+              <span className="letter" style={{ animationDelay: '0.2s' }}>e</span>
+              <span className="letter" style={{ animationDelay: '0.3s' }}>a</span>
+              <span className="letter" style={{ animationDelay: '0.4s' }}>r</span>
+              <span className="letter" style={{ animationDelay: '0.5s' }}>n</span>
+              <span className="letter" style={{ animationDelay: '0.6s' }}> </span>
+              <span className="letter" style={{ animationDelay: '0.7s' }}>W</span>
+              <span className="letter" style={{ animationDelay: '0.8s' }}>e</span>
+              <span className="letter" style={{ animationDelay: '0.9s' }}>b</span>
+              <span className="letter" style={{ animationDelay: '1.0s' }}> </span>
+              <span className="letter" style={{ animationDelay: '1.1s' }}>D</span>
+              <span className="letter" style={{ animationDelay: '1.2s' }}>e</span>
+              <span className="letter" style={{ animationDelay: '1.3s' }}>v</span>
+            </h1>
 
-          <p className="message">Hello world!</p>
+            <div className="divider"></div>
+
+            <p className="message">Start Your Coding Journey Today!</p>
+            <p className="hero-subtitle">
+              Master web development from scratch with our beginner-friendly tutorials.
+              No prior experience needed - we'll guide you every step of the way!
+            </p>
+
+            <div className="hero-cta">
+              <button className="primary-cta">Start Learning Now</button>
+              <button className="secondary-cta">Watch Demo Video</button>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="trust-section">
+            <div className="trust-item">
+              <div className="trust-number">10,000+</div>
+              <div className="trust-label">Students Enrolled</div>
+            </div>
+            <div className="trust-item">
+              <div className="trust-number">4.9/5</div>
+              <div className="trust-label">Average Rating</div>
+            </div>
+            <div className="trust-item">
+              <div className="trust-number">100%</div>
+              <div className="trust-label">Free Forever</div>
+            </div>
+            <div className="trust-item">
+              <div className="trust-number">24/7</div>
+              <div className="trust-label">Community Support</div>
+            </div>
+          </div>
 
           <div className="description">
             <h2>What is a Static Website?</h2>
-            <p>
-              A static website is the simplest type of web application. It consists of
-              HTML, CSS, and JavaScript files that are served directly to the browser
-              without any server-side processing. Perfect for getting started with web development!
-            </p>
+            <div className="description-content">
+              <p>
+                <strong>Think of a static website like a digital brochure!</strong> It's the simplest
+                and most beginner-friendly type of website you can build. Here's why it's perfect for you:
+              </p>
+              <ul className="benefits-list">
+                <li>📝 <strong>No complex programming needed</strong> - Start with just HTML and CSS</li>
+                <li>⚡ <strong>Super fast loading</strong> - Your visitors will love the speed!</li>
+                <li>💰 <strong>Free or cheap to host</strong> - Many hosting options cost $0</li>
+                <li>🎓 <strong>Learn the fundamentals</strong> - Build a solid foundation for advanced topics</li>
+              </ul>
+              <div className="info-box">
+                <div className="info-icon">💡</div>
+                <div className="info-text">
+                  <strong>Did you know?</strong> Some of the most popular websites started as static sites!
+                  It's the perfect way to get your ideas online quickly and professionally.
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="code-section">
-            <h3>Basic Structure</h3>
+            <h3>Your First Web Page - It's This Simple!</h3>
+            <p className="code-intro">
+              Copy this code and save it as <code className="inline-code">index.html</code>.
+              That's it - you've just created a website! 🎉
+            </p>
             <pre className="code-block">
               <code>{`<!DOCTYPE html>
 <html>
   <head>
-    <title>Server Hello World</title>
+    <title>My First Website</title>
   </head>
   <body>
-    <h1>Happy Coding</h1>
-    <p>Hello world!</p>
+    <h1>Hello World! 🌍</h1>
+    <p>Welcome to my first website!</p>
+    <p>I'm learning web development and this is my start!</p>
   </body>
 </html>`}</code>
             </pre>
+            <div className="code-explanation">
+              <h4>Let's break this down (beginner-friendly!):</h4>
+              <div className="explanation-grid">
+                <div className="explanation-item">
+                  <span className="code-tag">&lt;html&gt;</span>
+                  <span className="explanation-text">Tells the browser "Hey, this is a web page!"</span>
+                </div>
+                <div className="explanation-item">
+                  <span className="code-tag">&lt;head&gt;</span>
+                  <span className="explanation-text">Contains information ABOUT your page (like the title in the browser tab)</span>
+                </div>
+                <div className="explanation-item">
+                  <span className="code-tag">&lt;body&gt;</span>
+                  <span className="explanation-text">The actual content people will see on your page</span>
+                </div>
+                <div className="explanation-item">
+                  <span className="code-tag">&lt;h1&gt;</span>
+                  <span className="explanation-text">A big heading - the most important text on your page</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="features-grid">
@@ -178,6 +277,129 @@ function App() {
             </div>
           </div>
 
+          {/* Testimonials Section */}
+          <div className="testimonials-section">
+            <h2>What Our Students Say</h2>
+            <p className="section-subtitle">Join thousands of beginners who started their coding journey with us</p>
+            <div className="testimonials-grid">
+              <div className="testimonial-card">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "I went from zero coding knowledge to building my own website in just one week!
+                  The explanations are crystal clear and perfect for beginners."
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-avatar">👨‍💻</div>
+                  <div>
+                    <div className="author-name">Alex Johnson</div>
+                    <div className="author-title">Complete Beginner → Web Developer</div>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "Finally, a tutorial that doesn't assume I know everything already!
+                  Every step is explained like I'm five. I love it!"
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-avatar">👩‍💼</div>
+                  <div>
+                    <div className="author-name">Sarah Chen</div>
+                    <div className="author-title">Career Changer</div>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card">
+                <div className="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                <p className="testimonial-text">
+                  "The community is amazing! Whenever I got stuck, someone was there to help.
+                  Best learning experience ever!"
+                </p>
+                <div className="testimonial-author">
+                  <div className="author-avatar">👨‍🎓</div>
+                  <div>
+                    <div className="author-name">Mike Rodriguez</div>
+                    <div className="author-title">High School Student</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <p className="section-subtitle">We know starting can be scary. Here are answers to common questions!</p>
+            <div className="faq-container">
+              <div className={`faq-item ${openFaq === 0 ? 'active' : ''}`} onClick={() => toggleFaq(0)}>
+                <div className="faq-question">
+                  <span>Do I need any prior experience to start?</span>
+                  <span className="faq-icon">{openFaq === 0 ? '−' : '+'}</span>
+                </div>
+                {openFaq === 0 && (
+                  <div className="faq-answer">
+                    Absolutely not! This tutorial is designed for complete beginners. If you can use a computer
+                    and type, you can learn to code. We start from the very basics and explain everything step by step.
+                  </div>
+                )}
+              </div>
+              <div className={`faq-item ${openFaq === 1 ? 'active' : ''}`} onClick={() => toggleFaq(1)}>
+                <div className="faq-question">
+                  <span>Is this really free? What's the catch?</span>
+                  <span className="faq-icon">{openFaq === 1 ? '−' : '+'}</span>
+                </div>
+                {openFaq === 1 && (
+                  <div className="faq-answer">
+                    Yes, it's 100% free forever! No hidden costs, no credit card required. We believe everyone
+                    should have access to quality coding education. The only "catch" is that you'll need to put
+                    in the effort to learn!
+                  </div>
+                )}
+              </div>
+              <div className={`faq-item ${openFaq === 2 ? 'active' : ''}`} onClick={() => toggleFaq(2)}>
+                <div className="faq-question">
+                  <span>How long does it take to learn?</span>
+                  <span className="faq-icon">{openFaq === 2 ? '−' : '+'}</span>
+                </div>
+                {openFaq === 2 && (
+                  <div className="faq-answer">
+                    You can build your first website in just a few hours! To become comfortable with the basics,
+                    most students spend 2-4 weeks learning at their own pace. Remember, learning to code is a
+                    journey, not a race. Go at your own speed!
+                  </div>
+                )}
+              </div>
+              <div className={`faq-item ${openFaq === 3 ? 'active' : ''}`} onClick={() => toggleFaq(3)}>
+                <div className="faq-question">
+                  <span>What software or tools do I need?</span>
+                  <span className="faq-icon">{openFaq === 3 ? '−' : '+'}</span>
+                </div>
+                {openFaq === 3 && (
+                  <div className="faq-answer">
+                    All you need is a computer and a text editor (we recommend VS Code - it's free!). You don't
+                    need any expensive software or powerful hardware. If your computer can browse the web, it
+                    can write code!
+                  </div>
+                )}
+              </div>
+              <div className={`faq-item ${openFaq === 4 ? 'active' : ''}`} onClick={() => toggleFaq(4)}>
+                <div className="faq-question">
+                  <span>Can I really get a job after learning this?</span>
+                  <span className="faq-icon">{openFaq === 4 ? '−' : '+'}</span>
+                </div>
+                {openFaq === 4 && (
+                  <div className="faq-answer">
+                    This tutorial teaches you the foundations. While you'll need to learn more advanced topics
+                    for most developer jobs, you'll be surprised how many opportunities open up! Freelance web
+                    design, building sites for local businesses, or using this as a stepping stone to a full
+                    developer career are all possible paths.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
           <div className="resources">
             <h2>Learn More</h2>
             <p>
@@ -210,6 +432,60 @@ function App() {
         <div className="emoji emoji-3">💻</div>
         <div className="emoji emoji-4">🎨</div>
       </div>
+
+      {/* Professional Footer */}
+      <footer className="main-footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3 className="footer-title">CodeStart Academy</h3>
+            <p className="footer-description">
+              Empowering beginners to start their coding journey with confidence.
+              Learn web development from scratch with our easy-to-follow tutorials.
+            </p>
+            <div className="social-links">
+              <a href="#" className="social-link">Twitter</a>
+              <a href="#" className="social-link">GitHub</a>
+              <a href="#" className="social-link">Discord</a>
+              <a href="#" className="social-link">YouTube</a>
+            </div>
+          </div>
+          <div className="footer-section">
+            <h4>Quick Links</h4>
+            <ul className="footer-links">
+              <li><a href="#tutorial">Start Tutorial</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#community">Join Community</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Resources</h4>
+            <ul className="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Video Tutorials</a></li>
+              <li><a href="#">Code Examples</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Support</h4>
+            <ul className="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Report Bug</a></li>
+              <li><a href="#">Suggest Feature</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 CodeStart Academy. Made with ❤️ for beginners worldwide.</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
